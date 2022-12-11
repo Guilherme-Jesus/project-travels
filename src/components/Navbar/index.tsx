@@ -1,70 +1,68 @@
+import React, { useLayoutEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Button from "../Button";
 
-import { MdOutlineTravelExplore } from 'react-icons/md'
-import { AiFillCloseCircle } from 'react-icons/ai'
-import { TbGridDots } from 'react-icons/tb'
-import './style.scss'
-import { useState } from 'react'
+import "./styles.scss";
 
-function NavBar() {
-    const [active, setActive] = useState<string>('navBar')
+function Navbar() {
+    const [click, setClick] = useState(false);
+    const [button, setButton] = useState(true);
+    const handleClick = () => setClick(!click);
+    const closeMobileMenu = () => setClick(false);
 
-    const showNavBar = () => {
-        setActive('navBar activeNavBar')
-    }
-    const removeNavBar = () => {
-        setActive('navBar')
-    }
+    const showButton = () => {
+        if (window.innerWidth <= 960) {
+            setButton(false);
+        } else {
+            setButton(true);
+        }
+    };
+    useLayoutEffect(() => {
+        showButton();
+    }, []);
+
+    window.addEventListener("resize", showButton);
 
     return (
-        <section className="navBarSection">
-            <header
-                className="header flex">
-                <div className="logoDiv">
-                    <a href="#" className="logo flex">
-                        <h1><MdOutlineTravelExplore className="logo" />
-                            Travel</h1>
-                    </a>
-                </div>
-                <div className={active}>
-                    <ul className="navLists flex">
-                        <li className="navItem">
-                            <a href="#" className="navLink">Home</a>
+        <>
+            <nav className="navbar">
+                <div className="navbar-container">
+                    <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+                        TRVL <i className="fab fa-typo3" />
+                    </Link>
+                    <div className="menu-icon" onClick={handleClick}>
+                        <i className={click ? "fas fa-times" : "fas fa-bars"} />
+                    </div>
+                    <ul className={click ? "nav-menu active" : "nav-menu"}>
+                        <li className="nav-item">
+                            <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+                                Home
+                            </Link>
                         </li>
-                        <li className="navItem">
-                            <a href="#" className="navLink">Packages</a>
+                        <li className="nav-item">
+                            <Link
+                                to="/services"
+                                className="nav-links"
+                                onClick={closeMobileMenu}
+                            >
+                                Serviços
+                            </Link>
                         </li>
-                        <li className="navItem">
-                            <a href="#" className="navLink">Shop</a>
+                        <li className="nav-item">
+                            <Link
+                                to="/products"
+                                className="nav-links"
+                                onClick={closeMobileMenu}
+                            >
+                                Produtos
+                            </Link>
                         </li>
-                        <li className="navItem">
-                            <a href="#" className="navLink">About</a>
-                        </li>
-                        <li className="navItem">
-                            <a href="#" className="navLink">Pages</a>
-                        </li>
-                        <li className="navItem">
-                            <a href="#" className="navLink">News</a>
-                        </li>
-                        <li className="navItem">
-                            <a href="#" className="navLink">Contact</a>
-                        </li>
-                        <button className="btn">
-                            <a href="#">Book Now</a>
-                        </button>
-
-                        <div onClick={removeNavBar}
-                            className="closeNavBar">
-                            <AiFillCloseCircle className="icon" />
-                        </div>
                     </ul>
+                    {button && <Button buttonStyle="btn--outline">Cadastrar</Button>}
                 </div>
-                <div onClick={showNavBar}
-                    className="toogleNavBar">
-                    <TbGridDots className="icon" />
-                </div>
-            </header>
-        </section >
-    )
+            </nav>
+        </>
+    );
 }
 
-export default NavBar
+export default Navbar;
