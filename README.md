@@ -9,8 +9,8 @@ Projeto feito em React TS, sass e css, com varios destinos e informações sobre
 
 
 ## Demonstração
+https://project-travels.vercel.app/ 
 
-![](https://media.giphy.com/media/aEvJAazsAxihC3Pqz2/giphy.gif)
 ## Rodar Projeto:
 
 yarn run dev
