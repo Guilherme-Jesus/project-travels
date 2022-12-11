@@ -3,7 +3,18 @@ import { MdOutlineTravelExplore } from 'react-icons/md'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import { TbGridDots } from 'react-icons/tb'
 import './style.scss'
+import { useState } from 'react'
+
 function NavBar() {
+    const [active, setActive] = useState<string>('navBar')
+
+    const showNavBar = () => {
+        setActive('navBar activeNavBar')
+    }
+    const removeNavBar = () => {
+        setActive('navBar')
+    }
+
     return (
         <section className="navBarSection">
             <header
@@ -14,7 +25,7 @@ function NavBar() {
                             Travel</h1>
                     </a>
                 </div>
-                <div className="navBar">
+                <div className={active}>
                     <ul className="navLists flex">
                         <li className="navItem">
                             <a href="#" className="navLink">Home</a>
@@ -41,12 +52,14 @@ function NavBar() {
                             <a href="#">Book Now</a>
                         </button>
 
-                        <div className="closeNavBar">
+                        <div onClick={removeNavBar}
+                            className="closeNavBar">
                             <AiFillCloseCircle className="icon" />
                         </div>
                     </ul>
                 </div>
-                <div className="toogleNavBar">
+                <div onClick={showNavBar}
+                    className="toogleNavBar">
                     <TbGridDots className="icon" />
                 </div>
             </header>
