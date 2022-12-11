@@ -1,41 +1,87 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
   }
-  to {
-    transform: rotate(360deg);
+
+  :root {
+    --primary-color: hsl(199, 100%, 33%);
+    --secondary-color: hsl(187, 85%, 43%);
+    --gradient-color: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+    --white-color: hsl(0, 0%, 100%);
+    --black-color: hsl(201, 33%, 16%);
+    --text-color: hsl(240, 4%, 36%);
+    --white-color-dream: hsl(0, 0%, 93%);
+    --grey-text-color: rgb(190, 190, 190);
+    --input-color: rgb(239, 239, 239);
+    --body-color: rgb(240, 240, 246);
+    --card-bg: rgb(255, 225, 225);
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  a {
+    text-decoration: none;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  li {
+    list-style: none;
+  }
 
-.read-the-docs {
-  color: #888;
-}
+  .section {
+    padding: 4rem 0 2rem
+  }
+
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem
+  }
+
+  .icon {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .flex {
+    display: flex;
+    align-items: center;
+  }
+
+  .grid {
+    display: grid;
+    align-items: center;
+  }
+
+  .btn {
+    padding: 0.6rem 1.5rem;
+    background: var(--gradient-color);
+    border-radius: 3rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .btn a {
+    color: var(--white-color);
+    font-weight: 500;
+  }
+
+  .btn:hover {
+    background: var(--secondary-color);
+  }
+
+  img,
+  video {
+    width: 100%;
+    height: auto
+  }
+
+  input {
+    font-size: 100%;
+  }
+
+  body {
+    background: var(--body-color);
+  }
